@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:eParking.Mobile.ViewModels" xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:Class="eParking.Mobile.Views.ParkingDetaljiPage">
+    <ContentPage.BindingContext>
+        <vm:ParkingDetaljiVM />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="eParking"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="22"/>
+
+            <ListView ItemsSource="{Binding ListaParkinga}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Vertical">
+                                <StackLayout VerticalOptions="StartAndExpand" Orientation="Vertical">
+                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" Margin="5,5,0,5">
+                                        <Label Text="Naziv:" HorizontalOptions="Start" FontSize="18"/>
+                                        <Label Text="{Binding NazivParkinga}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="18"/>
+                                    </StackLayout>
+
+                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" Margin="5,5,0,5">
+                                        <Label Text="Radno vrijeme:" HorizontalOptions="Start" FontSize="18"/>
+                                        <Label Text="{Binding RadnoVrijeme}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="18"/>
+                                    </StackLayout>
+
+                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" Margin="5,5,0,5">
+                                        <Label Text="Broj rezervisanih mjesta:" HorizontalOptions="Start" FontSize="18"/>
+                                        <Label Text="{Binding BrojRezervisanihMijesta}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="18"/>
+                                    </StackLayout>
+
+                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" Margin="5,5,0,5">
+                                        <Label Text="Broj mjesta za osobe sa invaliditetom:" HorizontalOptions="Start" FontSize="18"/>
+                                        <Label Text="{Binding BrojSpecijalnihMijesta}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="18"/>
+                                    </StackLayout>
+
+                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" Margin="5,5,0,5">
+                                        <Label Text="Broj običnih parking mjesta:" HorizontalOptions="Start" FontSize="18"/>
+                                        <Label Text="{Binding BrojObicnihMijesta}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="18"/>
+                                    </StackLayout>
+
+                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" Margin="5,5,0,5">
+                                        <Label Text="Ukupan broj parking mjesta:" HorizontalOptions="Start" FontSize="18"/>
+                                        <Label Text="{Binding UkupanBrojMijesta}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="18"/>
+                                    </StackLayout>
+
+                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" Margin="5,5,0,5">
+                                        <Label Text="Trenutna udaljenost od parkinga:" HorizontalOptions="Start" FontSize="18"/>
+                                        <Label Text="{Binding TrenutnaUdaljenostOdParkinga}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="18"/>
+                                        <Label Text="km" HorizontalOptions="End" FontSize="18" FontAttributes="Bold"/>
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout VerticalOptions="CenterAndExpand" Orientation="Vertical" Margin="5,30,0,0">
+                                    <Label Text="Lokacija parkinga:" HorizontalOptions="StartAndExpand" FontSize="18" FontAttributes="Bold"/>
+                                    <StackLayout HorizontalOptions="CenterAndExpand" WidthRequest="400" HeightRequest="300" Margin="0,20">
+                                        <maps:Map x:Name="map"
+                                            IsShowingUser="True"
+                                            MoveToLastRegionOnLayoutChange="False" ItemsSource="{Binding Locations}">
+                                            <x:Arguments>
+                                                <maps:MapSpan>
+                                                    <x:Arguments>
+                                                        <maps:Position>
+                                                            <x:Arguments>
+                                                                <x:Double>36.9628066</x:Double>
+                                                                <x:Double>-122.0194722</x:Double>
+                                                            </x:Arguments>
+                                                        </maps:Position>
+                                                        <x:Double>0.01</x:Double>
+                                                        <x:Double>0.01</x:Double>
+                                                    </x:Arguments>
+                                                </maps:MapSpan>
+                                            </x:Arguments>
+                                            <maps:Map.ItemTemplate>
+                                                <DataTemplate>
+                                                    <maps:Pin Position="{Binding Position}"
+                                                            Address="{Binding Address}"
+                                                            Label="{Binding Description}" />
+                                                </DataTemplate>
+                                            </maps:Map.ItemTemplate>
+                                        </maps:Map>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

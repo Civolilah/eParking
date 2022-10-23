@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:eParking.Mobile.ViewModels"
+             x:Class="eParking.Mobile.Views.ParkinziPage">
+
+    <ContentPage.BindingContext>
+        <vm:ParkinziVM />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Padding="10">
+            <Label Text="eParking"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="22"/>
+            <StackLayout  HeightRequest="200">
+                <Label Text="Preporuka:" 
+                    HorizontalOptions="StartAndExpand" FontSize="17" FontAttributes="Bold"/>
+                <ListView ItemsSource="{Binding Preporuka}" ItemSelected="ListView_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10" Orientation="Vertical">
+                                    <StackLayout VerticalOptions="StartAndExpand" Orientation="Horizontal">
+                                        <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                            <Label Text="Naziv:" HorizontalOptions="Start" FontSize="16"/>
+                                            <Label Text="{Binding Naziv}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+
+                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                            <Label Text="Radno vrijeme:" HorizontalOptions="Start" FontSize="16"/>
+                                            <Label Text="{Binding RadnoVrijeme}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout VerticalOptions="CenterAndExpand" Orientation="Horizontal">
+                                        <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                            <Label Text="Broj slobodnih mjesta:" HorizontalOptions="Start" FontSize="16"/>
+                                            <Label Text="{Binding BrojSlobodnihMijesta}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+
+                                        <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                            <Label Text="Ukupan broj mjesta:" HorizontalOptions="Start" FontSize="16"/>
+                                            <Label Text="{Binding BrojZauzetihMijesta}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="16"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <StackLayout VerticalOptions="EndAndExpand" Orientation="Horizontal">
+                                        <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                            <Label Text="Trenutna udaljenost od parkinga:" HorizontalOptions="Start" FontSize="16"/>
+                                            <Label Text="{Binding TrenutnaUdaljenostOdParkinga}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="16"/>
+                                            <Label Text="km" HorizontalOptions="End" FontSize="16"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+            <Label Text="Lista parkinga:"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="StartAndExpand" FontSize="17" FontAttributes="Bold"/>
+            <ListView ItemsSource="{Binding ListaParkinga}" ItemSelected="ListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Vertical">
+                                <StackLayout VerticalOptions="StartAndExpand" Orientation="Horizontal">
+                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                        <Label Text="Naziv:" HorizontalOptions="Start" FontSize="16"/>
+                                        <Label Text="{Binding Naziv}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+
+                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                        <Label Text="Radno vrijeme:" HorizontalOptions="Start" FontSize="16"/>
+                                        <Label Text="{Binding RadnoVrijeme}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout VerticalOptions="CenterAndExpand" Orientation="Horizontal">
+                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                        <Label Text="Broj slobodnih mjesta:" HorizontalOptions="Start" FontSize="16"/>
+                                        <Label Text="{Binding BrojSlobodnihMijesta}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+
+                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                        <Label Text="Ukupan broj mjesta:" HorizontalOptions="Start" FontSize="16"/>
+                                        <Label Text="{Binding BrojZauzetihMijesta}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="16"/>
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout VerticalOptions="EndAndExpand" Orientation="Horizontal">
+                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                        <Label Text="Trenutna udaljenost od parkinga:" HorizontalOptions="Start" FontSize="16"/>
+                                        <Label Text="{Binding TrenutnaUdaljenostOdParkinga}" HorizontalOptions="Center" FontAttributes="Bold" FontSize="16"/>
+                                        <Label Text="km" HorizontalOptions="End" FontSize="16"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
